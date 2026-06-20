@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoPavimento 2.0</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#f4f4f4;
+}
+
+header{
+background:#2E7D32;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+h2{
+margin-bottom:15px;
+color:#2E7D32;
+}
+
+.mapa{
+height:500px;
+   background-image: url("mapa.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+border-radius:10px;
+position:relative;
+overflow:hidden;
+}
+
+.bache{
+    position:absolute;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.tooltip{
+    display:none;
+    position:absolute;
+    top:-90px;
+    left:25px;
+
+    width:180px;
+    background:white;
+    color:black;
+    
+    padding:10px;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(0,0,0,.3);
+
+    font-size:17px;
+    z-index:100;
+}
+
+.bache:hover .tooltip{
+    display:block;
+}
+
+.alto{
+background:red;
+}
+
+.medio{
+background:orange;
+}
+
+.bajo{
+background:green;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+margin-bottom:10px;
+border:1px solid #40b324;
+border-radius:5px;
+}
+
+button{
+background:#2E7D32;
+color:white;
+border:none;
+padding:12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1B5E20;
+}
+
+.estado{
+padding:10px;
+border-radius:5px;
+margin-top:10px;
+font-weight:bold;
+}
+
+.recibido{
+background:#FFF3CD;
+}
+
+.programado{
+background:#CCE5FF;
+}
+
+.reparado{
+background:#D4EDDA;
+}
+
+.eco{
+font-size:25px;
+font-weight:bold;
+color:#2E7D32;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>EcoPavimento 2.0</h1>
+<p>Reporte Inteligente de Baches y Pavimentación Sustentable</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Mapa de Reportes</h2>
+
+<div class="mapa">
+<div class="bache alto" style="top:100px; left: 700px;">
+        <span class="tooltip">
+        Av jardines de morelos, calle trueno<br>
+        Profundidad: 15 cm<br>
+        Riesgo: Alto<br>
+        Reportado: 17/06/2026
+    </span>
+</div>
+<div class="bache alto" style="top:300px; left: 320px;">
+      <span class="tooltip">
+        calle Río balsas<br>
+        Profundidad: 20 cm<br>
+        Riesgo: Alto<br>
+        Reportado: 15/06/2026
+    </span>
+</div>
+<div class="bache alto" style="top:400px; left: 870px;">
+      <span class="tooltip">
+        Calle Fuego<br>
+        Profundidad: 18 cm<br>
+        Riesgo: Alto<br>
+        Reportado: 16/06/2026
+    </span>
+</div>
+
+<div class="bache medio" style="top:400px;left:510px;">
+      <span class="tooltip">
+         Av jardines de morelos<br>
+        Profundidad: 6 cm<br>
+        Riesgo: Medio<br>
+        Reportado: 14/06/2026
+    </span>
+</div>
+
+<div class="bache bajo" style="top:220px;left:630px;">
+      <span class="tooltip">
+        Av jardines de morelos<br>
+        Profundidad: 4 cm<br>
+        Riesgo: Bajo<br>
+        Reportado: 13/06/2026
+    </span>
+</div>
+
+<div class="bache alto" style="top:40px;left:120px;">
+      <span class="tooltip">
+        Av jardines de morelos, calle trueno<br>
+        Profundidad: 8 cm<br>
+        Riesgo: Alto<br>
+        Reportado: 17/06/2026
+    </span>
+</div>
+
+<div class="bache medio" style="top:150px;left:250px;">
+      <span class="tooltip">
+      centro de sdalud<br>
+        Profundidad: 6 cm<br>
+        Riesgo: Medio<br>
+        Reportado: 15/06/2026
+    </span>
+</div>
+
+<div class="bache bajo" style="top:220px;left:500px;">
+      <span class="tooltip">
+       San juan de úlua<br>
+        Profundidad: 4 cm<br>
+        Riesgo: Bajo<br>
+        Reportado: 13/06/2026
+    </span>
+</div>
+
+</div>
+
+<br>
+
+<p>🔴 Alto riesgo</p>
+<p>🟠 Riesgo medio</p>
+<p>🟢 Riesgo bajo</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<h2>Reportar Bache</h2>
+
+<input type="text" placeholder="Nombre">
+
+<input type="text" placeholder="Ubicación del bache">
+
+<textarea rows="5" placeholder="Descripción"></textarea>
+
+<button onclick="enviarReporte()">Enviar Reporte</button>
+
+<p id="mensaje"></p>
+
+</div>
+
+<div class="card">
+
+<h2>Seguimiento del Reporte</h2>
+
+<div class="estado recibido">
+Reporte recibido
+</div>
+
+<div class="estado programado">
+Reparación programada
+</div>
+
+<div class="estado reparado">
+Bache reparado
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Impacto Ambiental</h2>
+
+<p>Kilogramos de plástico reciclado utilizados:</p>
+
+<br>
+
+<div class="eco" id="contadorPlastico">0 kg</div>
+
+<br>
+
+<p>
+Gracias al uso de plástico reciclado se han reducido residuos y se han fortalecido las vialidades.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Sistema de Recompensas</h2>
+
+<p>
+⭐ Tus puntos actuales:
+</p>
+
+<br>
+
+<div class="eco">120 puntos</div>
+
+<br>
+
+<p>
+Obtén puntos cada vez que reportes un bache válido.
+</p>
+
+</div>
+
+</div>
+
+<div class="footer">
+EcoPavimento 2.0 - Prototipo Académico
+</div>
+
+<script>
+
+function enviarReporte(){
+
+document.getElementById("mensaje").innerHTML =
+"✅ Reporte enviado correctamente.";
+
+}
+
+function animarContador(id, objetivo, duracion){
+
+    const elemento = document.getElementById(id);
+    let inicio = 0;
+    const incremento = objetivo / (duracion / 50);
+
+    function actualizar(){
+
+        inicio += incremento;
+
+        if(inicio < objetivo){
+
+            elemento.textContent =
+            Math.floor(inicio).toLocaleString() + " kg";
+
+            requestAnimationFrame(actualizar);
+
+        }else{
+
+            elemento.textContent =
+            objetivo.toLocaleString() + " kg";
+
+        }
+
+    }
+
+    actualizar();
+
+}
+
+animarContador("contadorPlastico", 1250, 2000);
+</script>
+
+</body>
+</html>
