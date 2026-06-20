@@ -287,44 +287,55 @@ Bache reparado
 </div>
 
 </div>
+<div class="card">
+
+    <h2>Evidencia fotográfica</h2>
+<p>
+     Antes
+    </p>
+    <img src="antes.jpg" width="250">
+    <p>
+        Despues</p>
+    <img src="despues.png" width="250">
+
+    <p>
+        Comparación del estado de la vialidad antes y después de la reparación.
+    </p>
+
+</div>
+</div>
+
+<div class="card">
+
+    <h2>Indicador ambiental</h2>
+
+    <p>Plástico reciclado utilizado:</p>
+
+    <div class="eco" id="contadorPlastico">0 kg</div>
+
+    <br>
+
+    <p>Botellas reutilizadas:</p>
+
+    <div class="eco" id="contadorBotellas">0</div>
 
 </div>
 
 <div class="card">
 
-<h2>Impacto Ambiental</h2>
+    <h2>Sistema de recompensas</h2>
 
-<p>Kilogramos de plástico reciclado utilizados:</p>
+    <p>Puntos acumulados:</p>
 
-<br>
+    <div class="eco" id="contadorPuntos">0 pts</div>
 
-<div class="eco" id="contadorPlastico">0 kg</div>
+    <br>
 
-<br>
+    <p>🏆 Nivel actual: Ciudadano Responsable</p>
 
-<p>
-Gracias al uso de plástico reciclado se han reducido residuos y se han fortalecido las vialidades.
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>Sistema de Recompensas</h2>
-
-<p>
-⭐ Tus puntos actuales:
-</p>
-
-<br>
-
-<div class="eco">120 puntos</div>
-
-<br>
-
-<p>
-Obtén puntos cada vez que reportes un bache válido.
-</p>
+    <p>
+        Reporta baches y gana puntos para obtener reconocimientos comunitarios.
+    </p>
 
 </div>
 
@@ -372,8 +383,39 @@ function animarContador(id, objetivo, duracion){
     actualizar();
 
 }
+function animarContadorTexto(id, objetivo, sufijo, duracion){
 
+    const elemento = document.getElementById(id);
+    let inicio = 0;
+    const incremento = objetivo / (duracion / 16);
+
+    function actualizar(){
+
+        inicio += incremento;
+
+        if(inicio < objetivo){
+
+            elemento.textContent =
+            Math.floor(inicio).toLocaleString() + sufijo;
+
+            requestAnimationFrame(actualizar);
+
+        }else{
+
+            elemento.textContent =
+            objetivo.toLocaleString() + sufijo;
+
+        }
+
+    }
+
+    actualizar();
+}
+
+animarContadorTexto("contadorPuntos", 120, " pts", 2000);
 animarContador("contadorPlastico", 1250, 2000);
+animarContador("contadorBotellas", 25000, 2500);
+
 </script>
 
 </body>
